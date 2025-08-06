@@ -1,4 +1,4 @@
-## [unreleased]
+## [1.4.0] - 2025-08-06
 
 ### 🚀 Features
 
@@ -9,10 +9,12 @@
 ### 🚜 Refactor
 
 - *(content)* Add settings and extreme mode
+- Modularize and improve performance
 
 ### 📚 Documentation
 
 - Add changelog
+- Add summary and update changelog
 ## [1.2.1] - 2025-08-02
 
 ### ⚙️ Miscellaneous Tasks
