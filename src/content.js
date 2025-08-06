@@ -1,4 +1,15 @@
-import { getSettings } from './settings.js';
+// --- Inlined from settings.js ---
+const defaultSettings = {
+    extensionEnabled: true,
+    extremeBauBau:    false,
+};
+
+function getSettings(callback) {
+    chrome.storage.sync.get(defaultSettings, (settings) => {
+        callback(settings);
+    });
+}
+// --- End inlined code ---
 
 const SELECTORS = [
     'ytd-thumbnail a > yt-image > img.yt-core-image',
