@@ -22,16 +22,22 @@ const EXTREME_SELECTOR = 'div#container > div.html5-video-player > div.html5-vid
 let currentSettings = {};
 
 function addOverlay(element) {
-    const container = element.closest('ytd-thumbnail') || element.parentElement;
-    if (!container || container.querySelector('.overlay-image')) {
-        return;
-    }
+    try {
+        const container = element.closest('ytd-thumbnail') || element.parentElement;
+        if (!container || container.querySelector('.overlay-image')) {
+            return;
+        }
 
-    container.classList.add('overlay-container');
-    const overlayImg = document.createElement('img');
-    overlayImg.src = chrome.runtime.getURL('with-fwmc.png');
-    overlayImg.classList.add('overlay-image');
-    container.appendChild(overlayImg);
+        container.classList.add('overlay-container');
+        const overlayImg = document.createElement('img');
+        overlayImg.src = chrome.runtime.getURL('with-fwmc.png');
+        overlayImg.classList.add('overlay-image');
+        container.appendChild(overlayImg);
+    } catch (error) {
+        // Extension context may be invalidated if the page is navigating,
+        // or the element was removed from the page. This is expected, so we
+        // can safely ignore the error.
+    }
 }
 
 function removeAllOverlays() {
