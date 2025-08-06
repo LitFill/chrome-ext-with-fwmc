@@ -1,0 +1,12 @@
+.overlay-container {
+    position: relative;
+}
+
+.overlay-image {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 55%;
+    max-height: 41%;
+    z-index: 10;
+}
