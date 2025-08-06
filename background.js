@@ -10,12 +10,6 @@
 //     });
 // });
 
-
-/** @type {(keys: string[], callback: (result: object) => void) => void} */
-const get = chrome.storage.sync.get
-/** @type {(result: object) => void} */
-const set = chrome.storage.sync.set
-
 /**
  * @param {boolean} setting
  * @param {boolean} def_val
@@ -26,8 +20,8 @@ const set_default = (setting, def_val) =>
 
 // Set default settings on installation
 chrome.runtime.onInstalled.addListener(() => {
-    get(['extensionEnabled', 'extremeBauBau'], (result) => {
-        set({
+    chrome.storage.sync.get(['extensionEnabled', 'extremeBauBau'], (result) => {
+        chrome.storage.sync.set({
             extensionEnabled: set_default(result.extensionEnabled, true),
             extremeBauBau:    set_default(result.extremeBauBau,    false),
         });
